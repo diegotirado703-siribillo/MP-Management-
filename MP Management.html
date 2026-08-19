@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- MP Management header + logo (paste into <head>) -->
+<style>
+  /* Header styles */
+  .mp-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  .mp-header .mp-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mp-contact-header img {
+  width: 200px;
+  max-width: 80%; /* optional: scale relative to container */
+  height: auto;
+  }
+  .mp-header img {
+    width: 150px;
+    height: 100px;
+    object-fit: contain;
+    display:block;
+  }
+  .mp-header .mp-site-title {
+    display:flex;
+    flex-direction:column;
+    line-height:1;
+  }
+  .mp-header .mp-site-title .name {
+    font-weight:700;
+    font-size:1.05rem;
+    color:#0b3b2a; /* dark green */
+  }
+  .mp-header .mp-site-title .tag {
+    font-size:0.85rem;
+    color:#6b7280; /* grey text */
+  }
+
+  /* Responsive */
+  @media (max-width:520px){
+    .mp-header img { width:44px; height:44px; }
+    .mp-header .mp-site-title .name { font-size:0.98rem; }
+    .mp-header { padding:10px 12px; gap:10px; }
+  }
+</style>
+
+<script>
+(function(){
+  // Adjust this filename/path if needed
+  const logoSrc = 'mp logo.png';
+
+  // Prevent injecting multiple times if script runs again
+  if (document.getElementById('mp-header')) return;
+
+  // Create header markup
+  const header = document.createElement('header');
+  header.id = 'mp-header';
+  header.className = 'mp-header';
+  header.innerHTML = `
+    <div class="mp-logo" aria-hidden="false">
+      <img src="${logoSrc}" alt="MP logo" />
+    </div>
+    <div class="mp-site-title" role="banner">
+      <div class="name">MP Management</div>
+      <div class="tag">Property Management • Rincón, PR</div>
+    </div>
+  `;
+
+  // Insert as first child of body (so header appears at top)
+  function insertHeader() {
+    if (document.body) {
+      document.body.insertBefore(header, document.body.firstChild);
+    } else {
+      // If body not ready yet, wait for DOMContentLoaded
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.insertBefore(header, document.body.firstChild);
+      });
+    }
+  }
+
+  insertHeader();
+})();
+</script>
+
+  <meta charset="UTF-8" />
+  <title> MP management Property Management in Rincón, PR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:#F3F4F6;
+      color:#111827;   /* dark by default */
+    }
+    a{text-decoration:none;color:inherit;}
+
+    .page{
+      max-width:900px;
+      margin:0 auto;
+      padding:20px 16px 60px;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:16px;
+    }
+    .logo{
+      font-weight:700;
+      font-size:1.1rem;
+      color:#022C22;
+    }
+    nav a{
+      margin-left:16px;
+      font-size:.9rem;
+      color:#141518;
+    }
+
+    .hero{
+  position:relative;
+  border-radius:16px;
+  padding:24px 20px;
+  margin-bottom:20px;
+  color:#ffffff; /* white on hero image */
+  overflow:hidden;
+  background-image:url('service-management.jpg');
+  background-size:cover;
+  background-position:center;
+}
+
+    .hero h1{
+  font-size:2.3rem;
+  margin-bottom:10px;
+}
+    .hero p{
+      margin-bottom:16px;
+      max-width:600px;
+      font-size:.95rem;
+    }
+    .btn-primary{
+      display:inline-block;
+      background:#ffffff;
+      color:#054a36;
+      border-radius:999px;
+      padding:10px 18px;
+      font-weight:600;
+      font-size:.95rem;
+    }
+    .hero-tag{
+      display:block;
+      margin-top:8px;
+      font-size:.8rem;
+      opacity:.9;
+    }
+
+    .section{
+      background:#ffffff;
+      border-radius:12px;
+      padding:20px 18px;
+      margin-top:16px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.04);
+       color:#101215;  /* dark in all white cards */
+    } 
+    .section h2{
+      font-size:1.3rem;
+      margin-bottom:6px;
+      color:#06a47f;
+    }
+    .section-sub{
+      font-size:.9rem;
+      margin-bottom:12px;
+      color:#3a3c3d;
+    }
+    .services{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      font-size:.9rem;
+    }
+    .service-card{
+      border:1px solid #E5E7EB;
+      border-radius:10px;
+      padding:10px 10px;
+    }
+    .service-card h3{
+      margin-bottom:4px;
+      font-size:1rem;
+      color:#07a97b;
+    }
+    .service-card ul{
+      padding-left:18px;
+    }
+    .service-card li+li{margin-top:4px;}
+
+    .mp-contact .lead{
+      margin-bottom:10px;
+      font-size:.95rem;
+    }
+    .mp-cta-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:#046e4d;  /* green */
+      color:#fff;
+      padding:10px 16px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:.95rem;
+    }
+    .mp-cta-sub{
+      display:block;
+      margin-top:6px;
+      font-size:.85rem;
+      color:#6B7280;
+    }
+    .mp-whatsapp-btn{
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 52px;
+      height: 52px;
+      background: #22C55E;
+      color: #ffffff;
+      border-radius: 50%;
+      border:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+  .mp-contact{
+  position:relative;
+  overflow:hidden;
+  background-image:url('service-management-2.jpg');
+  background-size:cover;
+  background-position:center;
+  color:#ffffff;  /* white text in contact */
+}
+
+/* existing overlay is fine */
+.mp-contact::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(236, 232, 232, 0.107);
+}
+/* background layer */
+.mp-services__bg{
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background-image: url('CUsersdiegoDesktopMP siteservice-management-3.jpg'); /* <-- change extension or path if needed */
+  background-size: cover;      /* cover ensures it fills container */
+  background-position: center; /* adjust to focus area */
+  background-repeat: no-repeat;
+  filter: brightness(0.55) saturate(0.95); /* darken slightly for legible text */
+  z-index: 0;
+}
+
+/* make inner content sit on top */
+.mp-contact > *{
+  position:relative;
+  z-index:1;
+}
+
+/* NEW: dark card behind the text and button */
+.mp-contact-inner{
+  background:rgba(255, 252, 252, 0);
+  padding:16px 14px;
+  border-radius:10px;
+  display:inline-block;
+}
+
+.mp-services{
+  position: relative;
+  overflow: hidden;
+  color: #fff; /* text color over the image */
+  border-radius: 12px;
+  margin: 36px auto;
+  max-width: 1100px;
+}
+
+/* content above background */
+.mp-services__content{
+  position: relative;
+  z-index: 1;
+  padding: 48px 24px;
+  backdrop-filter: none;
+}
+
+/* optional responsive tweaks */
+@media (max-width: 700px){
+  .mp-services__content { padding: 28px 16px; }
+  .mp-services h2 { font-size: 1.4rem; }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- Floating WhatsApp Button -->
+  <button class="mp-whatsapp-btn" id="mpWhatsBtn" aria-label="Contact MP Management on WhatsApp">
+    W
+  </button>
+
+  <div class="page">
+    <header>
+      <div class="logo">MP Management</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Full‑service property management in Rincón, Puerto Rico</h1>
+      <p>We’re a hands‑on, local team in Rincón specializing in property management, guest hosting, maintenance, and renovations. We treat your place like our own, keep your guests supported, and keep your numbers clear and transparent every month.</p>
+      <a class="btn-primary" href="https://wa.me/17876298713" target="_blank" rel="noopener noreferrer">
+        WhatsApp us at (787) 629-8713
+      </a>
+      <span class="hero-tag">Friendly local team • WhatsApp only • Clear communication with owners & guests</span>
+    </section>
+
+    <section class="section" id="services">
+      <h2>Services</h2>
+      <p class="section-sub">Hands‑on property management, guest hosting, and complete care for your investment in Rincón, Puerto Rico.</p>
+
+      <div class="services">
+        <div class="service-card">
+          <h3>Property Management & Hosting</h3>
+          <ul>
+            <li><strong>Full guest hosting</strong> – Inquiries, bookings, check‑ins, and check‑outs handled for you.</li>
+            <li><strong>Day‑to‑day oversight</strong> – Regular check‑ins so your place stays secure, clean, and guest‑ready.</li>
+            <li><strong>Clear communication</strong> – Fast updates with owners and guests so everyone knows what to expect.</li>
+            <li><strong>Monthly statements</strong> – Simple reports of revenue, expenses, and net income.</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Property Maintenance & Upkeep</h3>
+          <ul>
+            <li><strong>Interior maintenance</strong> – Repairs, minor fixes, and general upkeep.</li>
+            <li><strong>Exterior & yard care</strong> – Basic yard work, exterior cleaning, and weather‑related upkeep.</li>
+            <li><strong>Guest‑ready standards</strong> – Turnovers, cleanings, and inspections for every stay.</li>
+            <li><strong>Issue response</strong> – Quick local response when problems come up.</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <h3>Remodeling & Renovations</h3>
+          <ul>
+            <li><strong>Modernizing your property</strong> – From small upgrades to full remodels.</li>
+            <li><strong>Design & planning support</strong> – What to update to improve guest experience and value.</li>
+            <li><strong>Local contractor coordination</strong> – Working with local crews and suppliers.</li>
+            <li><strong>Progress updates</strong> – Photos and clear communication while work is in progress.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mp-about" id="about">
+      <h2>About MP Management</h2>
+      <p>MP Management is a local team based in Rincón, Puerto Rico, helping property owners navigate island life, logistics, and infrastructure with less stress.</p>
+      <p>We focus on friendly, reliable service with a professional standard: clear communication, organized systems, and properties that are always guest‑ready inside and out.</p>
+    </section>
+<section class="section mp-contact" id="contact">
+  <div class="mp-contact-inner">
+    <h2>Contact</h2>
+    <p class="lead">For new properties, maintenance needs, and renovation quotes, send us a message on WhatsApp and we’ll walk you through next steps.</p>
+
+    <a class="mp-cta-btn" href="https://wa.me/17876298713" target="_blank" rel="noopener noreferrer">
+      <span>Message us on WhatsApp</span>
+      <strong>(787) 629-8713</strong>
+    </a>
+    <span class="mp-cta-sub">We respond via WhatsApp only. Typical reply within 2 hours during business hours.</span>
+  </div>
+</section>
+
+
+  <script>
+    (function(){
+      const phone = '17876298713';
+      const btn = document.getElementById('mpWhatsBtn');
+      function openWhats() {
+        const waUrl = 'https://wa.me/' + phone;
+        window.open(waUrl, '_blank', 'noopener');
+      }
+      btn.addEventListener('click', openWhats);
+    })();
+  </script>
+</body>
+</html>
